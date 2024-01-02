@@ -1,0 +1,68 @@
+---
+title: "RStudio (Posit)"
+subtitle: "A empresa, os pacotes que eles criam e como eles fomentam a comunidade R."
+title-slide-attributes:
+  data-background-image: rstudioconf22_1.jpg
+  data-background-opacity: ".25"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# O que é RStudio? {background-image="rstudio_screenshot.png" background-opacity=".12"}
+
+É o nome da principal IDE (*Integrated Development Environment*) para a linguagem R, que foi criada pela empresa que tinha o mesmo nome.
+
+Desde 2022 a empresa RStudio passou a chamar-se **Posit**.
+
+# Mudanças nos produtos ... {background-image="posit_cloud.png" background-opacity=".12" background-color="#E7AD52"}
+
+Consequentemente, alguns de seus produtos foram renomeados, como: "RStudio Cloud" passou a chamar-se "Posit Cloud".
+
+Mas a principal IDE segue sendo chamada de RStudio.
+
+# Origem da empresa RStudio / Posit
+
+Fundada em 2009 por Joseph J. Allaire, com a visão de trazer *software open-source* de alta qualidade para **cientistas de dados**.
+
+## Princpais pacotes criados e mantidos pela Posit {style="font-size: 0.85em;"}
+
+- `dplyr`: transformação de dados, sintaxe utilizando `pipe`.
+- `ggplot2`: **gráficos sofisticados** e personalizáveis.
+- `tidyverse`: conjunto de pacotes para manipulação e visualização de dados de forma fácil e intuitiva (detalhes a seguir).
+- `shiny`: criação de **aplicativos web** interativos em R sem a necessidade de conhecimento em HTML, CSS ou JavaScript.
+- `quarto`: criação de **relatórios dinâmicos**, documentos e apresentações a partir de código R combinado com texto.
+
+## O `tidyverse` merece uma ênfase! {background-color="#333" style="font-size: 0.85em;"}
+
+Fazem parte, entre outros, os seguintes pacotes:
+
+- `dplyr`: manipulação de dados.
+- `ggplot2`: visualização de dados.
+- `tidyr`: organização de dados.
+- `readr`: leitura de dados.
+- `purrr`: programação funcional.
+- `stringr`: manipulação de strings.
+- `lubridate`: trabalhar com datas.
+- `forcats`: manipulação de fatores (variáveis categóricas).
+- `magrittr`: criar pipelines (comandos empilhados).
+
+# Posit e a comunidade R {background-image="rstudioconf22_1.jpg" background-opacity=".12" style="font-size: 0.85em;"}
+
+- Pacotes de código aberto, como o Tidyverse.
+- Educação para aprimorar habilidades em R.
+  - https://education.rstudio.com/
+- Ferramentas para programação, como o RStudio IDE e o Posit Cloud.
+- Conferências e eventos de R, como o `rstudio::conf`.
+  - https://posit.co/conference/
+
+# Conclusão {style="font-size: 0.85em;"}
+
+A Posit é uma empresa que desenvolve **pacotes e ferramentas** para a linguagem R. **Fomenta a comunidade** por meio de treinamentos, eventos e iniciativas de diversidade e inclusão. Suas ações impactam diretamente no desenvolvimento da linguagem R como um todo.
+
+# Obrigado!

@@ -1,0 +1,136 @@
+---
+title: "Introdução à Linguagem R"
+subtitle: "Origem da linguagem e sua aplicação"
+title-slide-attributes:
+  data-background-image: statistics.jpg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+## Origem da Linguagem R {background-image="auckland-nova-zelandia.jpg" background-opacity=".2" style="font-size: 0.85em;"}
+
+- Sucessora da Linguagem S
+  - Genérica e uma das primeiras a incluir recursos para **gráficos estatísticos**
+- Criada por Ross Ihaka e Robert Gentleman em 1993
+  - **Professores de estatística** da Universidade de Auckland, na Nova Zelândia
+  - Criada para suprir a **falta de ferramentas adequadas** para análise de dados
+
+::: {.notes}
+A linguagem R é a sucessora da Linguagem S e foi criada em 1993 por Ross Ihaka e Robert Gentleman, que eram professores de estatística na Universidade de Auckland, na Nova Zelândia.
+
+A Linguagem R foi criada para suprir a falta de ferramentas adequadas para análise de dados e foi uma das primeiras a incluir recursos para gráficos estatísticos.
+:::
+
+# Propósito da Linguagem R {background-color="#E7AD52"}
+
+> "Ambiente de software livre para **computação estatística** e **gráficos**."
+
+- **Gratuita** e de **código aberto** (*open source*)
+
+::: {.notes}
+O propósito da Linguagem R é ser um ambiente de software livre para computação estatística e gráficos. Ela é gratuita e de código aberto, o que significa que qualquer pessoa pode usá-la e modificá-la.
+:::
+
+# Comunidade ativa no mundo todo! {background-image="comunidade.jpeg" background-opacity=".2" style="font-size: 0.85em;"}
+
+- Cerca de **500k** de perguntas no *StackOverflow* na `#r`
+- Média de **160 milhões** de downloads de pacotes mensais (veja a evolução a seguir)
+
+::: {.notes}
+A comunidade de usuários da Linguagem R é bastante ativa no mundo todo! Para se ter uma ideia, há cerca de 500 mil perguntas relacionadas à linguagem R no StackOverflow. 
+
+Além disso, a linguagem tem uma média de 160 milhões de downloads de pacotes por mês.
+:::
+
+## Downloads mensais de pacotes da Linguagem R {background-image="pico_roys_nz.jpeg" background-opacity=".2" style="font-size: 0.85em;"}
+
+```{r, echo=FALSE, warning=FALSE}
+library(cranlogs)
+library(dplyr)
+library(echarts4r)
+library(lubridate)
+library(magrittr)
+
+last_day_last_month <- Sys.Date() |>
+  floor_date(unit = "month") |>
+  magrittr::subtract(1)
+
+# Get the package download data from the CRANlogs API for all packages
+if (length(list.files(".", "pkg_downloads.rds")) > 0) {
+  pkg_downloads <- readr::read_rds("pkg_downloads.rds")
+} else {
+  pkg_downloads <- cran_downloads(
+    packages = NULL,
+    from = "2013-01-01",
+    to = last_day_last_month
+  ) |>
+    as_tibble() |>
+    mutate(date = as.Date(date)) |>
+    mutate(
+      month = month(date),
+      year = year(date)   
+    )
+
+  saveRDS(pkg_downloads, "pkg_downloads.rds")
+}
+
+# Aggregate the downloads by month
+chart_data <- pkg_downloads |>
+  group_by(month, year) |>
+  summarise(
+    "Soma de pacotes baixados" = sum(count),
+    .groups = "drop"
+  ) |>
+  mutate("Mês" = as.Date(paste0("01-", month, "-", year), "%d-%m-%Y")) |>
+  arrange(`Mês`) |>
+  select(-c("month", "year"))
+
+chart_data |>
+  e_charts(x = `Mês`) |>
+  e_line(serie = `Soma de pacotes baixados`) |>
+  e_tooltip(trigger = "axis") |> 
+  e_x_axis(type = "time") |> 
+  e_y_axis(name = "Downloads Mensais") |>
+  e_theme("chalk") |>
+  e_color(background = "#66000000")
+```
+
+::: {.notes}
+Neste gráfico, podemos ver a evolução dos downloads mensais de pacotes da Linguagem R. 
+
+Como podemos ver, há um crescimento constante ao longo dos anos, o que indica a popularidade da linguagem.
+:::
+
+# O R na área de ... {background-image="bioinformatica.jpeg" background-opacity=".2" style="font-size: 0.85em;"}
+
+- Bioinformática e análise genômica 
+- Finanças e análises de risco
+- Pesquisa de mercado e análise de dados de vendas
+- Georreferenciamento
+- Pesquisas acadêmicas
+- E muito mais ...
+
+::: {.notes}
+A Linguagem R é utilizada em diversas áreas, como bioinformática e análise genômica, finanças e análises de risco, pesquisa de mercado e análise de dados de vendas, georreferenciamento, pesquisas acadêmicas e muito mais.
+:::
+
+# Conclusão {background-color="#87CEEB"}
+
+- Ferramenta poderosa para **modelagem estatística** e **visualização de dados**
+- Ampla disponibilidade de pacotes e bibliotecas torna a linguagem R **altamente extensível**
+- Usada em uma **variedade de setores**
+
+::: {.notes}
+Concluindo, podemos afirmar que a Linguagem R é uma ferramenta poderosa para modelagem estatística e visualização de dados. Além disso, a ampla disponibilidade de pacotes e bibliotecas torna a linguagem R altamente extensível, o que a torna uma ótima opção para quem trabalha com dados. A linguagem é utilizada em uma variedade de setores e possui uma comunidade ativa de usuários em todo o mundo.
+
+Com isso eu espero ter fornecido informações úteis sobre a Linguagem R e sua origem, propósito e aplicação em diversas áreas.
+
+Até a próxima!
+:::

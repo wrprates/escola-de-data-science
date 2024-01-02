@@ -1,0 +1,80 @@
+---
+title: "Como instalar a Linguagem R"
+subtitle: "Mac, Windows e Linux"
+title-slide-attributes:
+  data-background-image: varios_sistemas.jpeg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# Introdução {background-color="#E7AD52"}
+
+Nesta aula, vamos ver como instalar a linguagem R em diferentes sistemas operacionais, incluindo Mac, Windows e Linux.
+
+# Instalação no Mac
+
+Para instalar a linguagem R no Mac, basta seguir estes passos:
+
+1. Acesse o [site oficial](https://cran.r-project.org/) do R.
+2. Clique no link para baixar a versão mais recente para Mac.
+3. Abra o arquivo .dmg e siga as instruções para instalar o R.
+
+# Instalação no Windows
+
+Para instalar a linguagem R no Windows, basta seguir estes passos:
+
+1. Acesse o [site oficial](https://cran.r-project.org/) do R.
+2. Clique no link para baixar a versão mais recente para Windows.
+3. Abra o arquivo .exe e siga as instruções para instalar o R.
+
+# RTools para Windows - Por que é preciso? {style="font-size: 0.80em;" background-color="#E7AD52"}
+
+- Se você estiver usando o Windows, também precisará instalar o RTools. 
+
+- O RTools é fundamental para instalar pacotes R que utilizam códigos em **linguagens de baixo nível**, como C e C++.
+
+- O RTools permite que você compile esses pacotes no seu próprio sistema e use a linguagem R sem problemas.
+
+## Apenas alguns pacotes que precisam do RTools {style="font-size: 0.60em"}
+
+| Nome do Pacote | O que o Pacote Faz | Linguagem de Baixo Nível |
+|---|-------|---|
+| data.table | Fornece alternativas de alta performance para manipulação de dados em R | C e C++ |
+| stringi | Fornece funções para manipulação de strings em R | C e C++ |
+| dplyr | Oferece uma gramática para manipulação de dados em R | C++ |
+| Rcpp | Permite integrar código C++ em R para escrever funções R mais rápidas e eficientes | C++ |
+| devtools | Fornece ferramentas para desenvolvimento e instalação de pacotes R | C++ |
+
+<br>
+
+Citei apenas alguns, mas existem diversos outros...
+
+# Instalando o RTools {background-color="#E7AD52"}
+
+Para instalar o RTools, siga estes passos:
+
+1. Acesse o [site oficial](https://cran.r-project.org/bin/windows/Rtools/) do RTools.
+2. Clique no link para baixar a versão que condiz com sua versão do `R`.
+3. Abra o arquivo .exe e siga as instruções para instalar o RTools.
+
+# Instalação no Linux
+
+Para instalar a linguagem R no Linux (Ubuntu), basta seguir estes passos:
+
+1. Abra o terminal e execute o seguinte comando para instalar o R: `sudo apt-get install r-base`
+2. Se você quiser instalar pacotes adicionais, execute o comando `sudo apt-get install r-base-dev`
+
+# Conclusão
+
+- Agora que você sabe como instalar a linguagem R em diferentes sistemas operacionais, **está pronto** para começar a explorar a linguagem e suas ferramentas para análise de dados.
+
+- Lembre-se de que a instalação de pacotes adicionais pode ser necessária para certas funcionalidades e, no caso do Windows, é preciso também instalar o RTools para compilar pacotes.
+
+# Obrigado!

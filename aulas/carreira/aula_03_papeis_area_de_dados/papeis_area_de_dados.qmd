@@ -1,0 +1,73 @@
+---
+title: "Principais papeis e funções na área de dados"
+subtitle: "BI, analista de dados, cientista de dados, engenheiro de dados, engenheiro de *machine learning*"
+title-slide-attributes:
+  data-background-image: profissional_de_dados.jpeg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# Introdução {background-color="#E7AD52"}
+
+- Existem diferentes papéis e funções na área de análise de dados
+- Nesta aula, vamos falar sobre os principais:
+  -  profissional de BI,
+  - analista de dados,
+  - cientista de dados,
+  - engenheiro de dados, e 
+  - engenheiro de *machine learning*.
+
+
+## Profissional de BI {background-image="profissional_bi.jpeg" background-opacity=".2"}
+
+- **Coleta, analisa e apresenta dados** para ajudar as organizações a tomar **decisões melhores** e mais informadas
+- Cria ***dashboards*** e relatórios para comunicar *insights* e tendências para as partes interessadas
+- Habilidade em SQL e conhecimento em ferramentas de BI, como Tableau e Power BI
+
+
+## Analista de dados {background-image="analista_dados.jpeg" background-opacity=".2"}
+
+- Analisa dados existentes para **obter insights** e informações úteis
+- Foco em **análises mais básicas e descritivas**
+- Usa ferramentas e técnicas de análise de dados para fornecer informações para a tomada de decisões
+- Utiliza o básico de **linguagens de programação** como **R e Python**
+
+## Cientista de dados {background-image="cientista_de_dados.jpeg" background-opacity=".2"}
+
+- Combina habilidades em **estatística, programação e negócios** para resolver **problemas complexos** usando dados
+- Utiliza modelos estatísticos e algoritmos de *machine learning* para prever **tendências** e descobrir **padrões**
+- Habilidade em **análise exploratória** de dados e programação em linguagens como **R e Python**
+
+## Engenheiro de dados {background-image="data_engineer.jpeg" background-opacity=".2"}
+
+- Projeta, constrói e mantém sistemas de **armazenamento e processamento de dados**
+- Responsável por garantir que os dados sejam limpos, organizados e acessíveis
+- Habilidade em programação focada em dados (**R e Python**) e em tecnologias de armazenamento e processamento de dados como Hadoop, Spark.
+- Sabe trabalhar com serviços de Big Data, como o Google Big Query ou AWS Redshift
+
+## Engenheiro de Machine Learning {background-image="machine_learning.jpeg" background-opacity=".2"}
+
+- Usa algoritmos de machine learning para **criar, avaliar e monitorar modelos preditivos e prescritivos** rodando em **produção**
+- Compreende os fundamentos da matemática e da estatística por trás dos modelos de *machine learning*
+- Habilidade em programação em linguagens como **R e Python** e conhecimento em ferramentas de machine learning como H2O, Scikit-learn e TensorFlow
+
+
+## Comparativo {background-color="#fff" style="font-size: 0.55em;"}
+
+| Papel                       | Habilidades                                                           | Responsabilidades                                                                                                           |
+|-----------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Profissional de BI          | SQL, data warehousing e visualização de dados           | Coletar, limpar e transformar dados em informações úteis para tomada de decisão, projetar e gerenciar bancos de dados e pipelines de ETL    |
+| Analista de dados           | Habilidades analíticas, pensamento crítico, habilidades de comunicação | Coletar, limpar e transformar dados em informações úteis para tomada de decisão, gerar relatórios e visualizações          |
+| Cientista de dados          | Estatística, *machine learning* e programação            | Coletar, limpar, transformar e analisar dados para desenvolver modelos preditivos e prescritivos, identificar oportunidades de negócios e otimizar processos |
+| Engenheiro de dados         | Habilidades em programação, banco de dados e Big Data                  | Projetar, construir e gerenciar *pipelines* de dados para coleta, armazenamento e processamento eficiente de grandes volumes de dados  |
+| Especialista em *machine learning* |  Estatística, *machine learning* e programação        | Desenvolver, treinar e otimizar modelos de *machine learning* para solucionar problemas de negócios, colaborar com cientistas de dados para implementar modelos em ambientes de produção |
+
+
+# Obrigado!

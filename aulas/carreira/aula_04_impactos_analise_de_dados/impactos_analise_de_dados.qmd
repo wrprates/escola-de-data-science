@@ -1,0 +1,49 @@
+---
+title: "O impacto da análise de dados nas organizações"
+subtitle: "Empresas que utilizam dados *versus* empresas que não utilizam"
+title-slide-attributes:
+  data-background-image: remo_competicao.jpeg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+## Vantagens das empresas que utilizam análise de dados {background-color="#E7AD52"}
+
+- Tomada de decisão baseada em dados
+- Identificação de **oportunidades** de negócios
+- **Otimização** de processos
+- Melhoria na **eficiência e produtividade**
+- **Maior competitividade** no mercado
+
+## Desvantagens das empresas que não utilizam análise de dados {background-color="#2B2B2B"}
+
+- Tomada de decisão baseada em **suposições e achismos**
+- **Perda de oportunidades** de negócios
+- Processos pouco eficientes e pouco produtivos
+- **Dificuldade em competir** no mercado
+
+
+## Exemplos de impacto da análise de dados em empresas {background-color="#87CEEB"}
+
+Casos conhecidos
+
+- A Amazon utiliza dados para **personalizar recomendações** de produtos aos clientes
+- A Target utiliza dados para **identificar clientes grávidas** e oferecer produtos relacionados
+- A Ford utiliza dados para melhorar o processo de manufatura e **reduzir desperdícios**
+
+## Exemplos de impacto da análise de dados em empresas {background-color="#87CEEB"}
+
+Casos em que trabalhei
+
+- Predição de clientes que irão gerar *chrun* (cancelamento em modelo de assinatura)
+- Predição de *turnover* voluntário (colaboradores que irão pedir demissão)
+- Recomendação de peças a serem substituídas na manutenção de aeronaves
+
+# Obrigado!

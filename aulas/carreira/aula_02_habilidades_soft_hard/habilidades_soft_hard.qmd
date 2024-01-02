@@ -1,0 +1,63 @@
+---
+title: "Habilidades necessárias para trabalhar com dados"
+subtitle: "*Soft* e *hard skills*"
+title-slide-attributes:
+  data-background-image: raciocinio_logico.jpeg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# 1. Introdução {background-color="#E7AD52"}
+
+## Várias Subáreas em Dados
+Existem **várias subáreas** dentro da área de dados, tais como:
+
+- inteligência de negócios (BI),
+- análise de dados,
+- ciência de dados, 
+- engenharia de dados, e
+- engenharia de *machine learning*, por exemplo.
+
+# Dica 1. Cuidado com o excesso de informação {background-image="muita_info.jpeg" background-opacity=".2"}
+
+Não se assuste com a enorme quantidade de conteúdo que vemos em algumas "formações" na área de dados.
+
+# Dica 2. Um passo de cada vez ... {background-image="foco.jpeg" background-opacity=".2"}
+
+Comece com o básico, escolha sua subárea de preferência e vá aumentando seu conhecimento enquanto já começa a aplicar o que aprendeu na prática!
+
+
+## Habilidades em Comum
+- Apesar das diferenças específicas, há **habilidades em comum** que são essenciais para **profissionais de dados**.
+
+- Vamos discutir aqui as principais *soft* e *hard skills* que você precisa  para trabalhar com dados.
+
+# 1. Soft skills {background-color="#E7AD52"}
+
+- Solução de problemas
+- Pensamento analítico (desmembrar problemas)
+- Raciocínio lógico (seguir uma ordem de pensamento)
+- Trabalho em equipe
+- Criatividade
+- Comunicação
+
+# 2. Hard skills {background-color="#87CEEB"}
+
+- Conhecimento em programação
+- Conhecimento em estatística e matemática
+- Conhecimento em bancos de dados
+- Habilidades em visualização de dados
+- Habilidades em *machine learning*
+
+## Habilidades em Alta Demanda
+
+Vamos explorar o site <https://datanerd.tech/>
+
+# Obrigado!

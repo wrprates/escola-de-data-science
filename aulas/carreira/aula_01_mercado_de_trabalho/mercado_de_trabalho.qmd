@@ -1,0 +1,76 @@
+---
+title: "Mercado de Trabalho na Área de Dados"
+subtitle: "Perspectivas, Salários e Atuações em outros Países"
+title-slide-attributes:
+  data-background-image: cidade_grande.jpeg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# 1. Perspectivas {background-color="#E7AD52"}
+
+# O mercado de trabalho para profissionais de dados tem crescido nos últimos anos
+
+## Crescimento da área de Dados
+
+```{r, echo=FALSE, warning=FALSE}
+library(readr)
+library(echarts4r)
+
+trends_data_science_ml <- read_csv("data_science_ml.csv") |>
+  dplyr::mutate(`Mês` = as.Date(paste0(`Mês`, "-01"), format = "%Y-%m-%d"))
+
+trends_data_science_ml |>
+  e_charts(x = `Mês`) |>
+  e_line(serie = `Ciência de dados`) |>
+  e_line(serie = `Aprendizado de máquina`) |>
+  e_tooltip(trigger = "axis") |> 
+  e_x_axis(type = "time") |> 
+  e_y_axis(name = "Pesquisas") |>
+  e_theme("chalk") |>
+  e_color(background = "#66000000")
+```
+<div style="font-size:11px;">Fonte: Google Trends</div>
+
+# A demanda por **cientistas**, **engenheiros** e **analistas** de dados continua a aumentar {background-image="trabalho_em_equipe.jpeg" background-opacity=".2" style="font-size: 0.85em;"}
+
+# As oportunidades estão em várias indústrias, como finanças, saúde, tecnologia e varejo {style="font-size: 0.85em;"}
+
+# 2. Salários {background-color="#E7AD52"}
+
+## Salários Altos!
+::: columns
+
+:::: column
+- Os salários para profissionais de dados são bastante `competitivos`
+- O salário pode variar de acordo com a **indústria, localização geográfica e nível de experiência**
+::::
+
+:::: column
+![](data_nerd_salarios.png)
+<div style="font-size:11px;">Fonte: <https://datanerd.tech/Salary></div>
+::::
+
+:::
+
+# 3. Atuações em outros Países {background-color="#E7AD52"}
+
+## A área de dados no mundo
+
+- A análise de dados é uma habilidade valiosa em todo o mundo
+- Os profissionais de dados podem trabalhar em **empresas globais** ou **empresas locais**, dependendo de sua preferência
+- Em 2023, o site `datanerd.tech` coleta diariamente cerca de **6500 novas vagas na área de dados todos os dias ao redor do mundo**!
+
+# E o melhor: trabalhe de onde quiser! {background-image="trabalho_remoto.jpeg" background-opacity=".2" style="font-size: 0.85em;"}
+
+## Vagas remotas!
+![](vagas_dados.png){fig-align="center"}
+
+# Obrigado!

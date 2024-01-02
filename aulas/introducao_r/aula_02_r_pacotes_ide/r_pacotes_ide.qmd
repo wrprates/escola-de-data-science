@@ -1,0 +1,21 @@
+---
+title: "O que você precisa saber antes de começar"
+subtitle: "Instalação da linguagem R, pacotes, IDE"
+title-slide-attributes:
+  data-background-image: linguagem_r_pacotes_ide.png
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+## Estrutura em volta do R {background-color="#fff"}
+
+![](linguagem_r_pacotes_ide.png)
+
+# Obrigado!
