@@ -1,0 +1,149 @@
+---
+title: "Identificação de Dados Faltantes no R"
+subtitle: "Identificando Dados Faltantes"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: black
+    incremental: false
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+## Introdução {data-background-color="#006837"}
+
+- Dados de qualidade: essenciais para análise
+- Dados faltantes: causam distorções
+- Identificação: primeiro passo para correção
+- O que fazer para tratar dados faltantes
+
+# Identificação de Dados Faltantes
+
+## A Importância da Identificação {data-background-color="#004F2D"}
+
+- Distorção de estatísticas
+- Comprometimento de modelos
+- Afeta a **tomada de decisão**
+
+## Detecção de Dados Ausentes no R {data-background-color="#013220"}
+
+- 'NA' no R indica dado ausente
+- Uso de `is.na()` para identificar NAs
+- `summarise()` ajuda a sumarizar a quantidade de NAs
+
+## Exemplo Prático de Detecção {data-background-color="#001F10"}
+
+- Dataset `airquality`
+- Localização de valores ausentes
+
+Veja como somar a quantidade de NA's para cada coluna:
+
+```{r, echo=TRUE}
+# Carregando o dataset 'airquality'
+data("airquality")
+
+# Utilizando summarise() com dplyr para sumarizar os dados faltantes
+library(dplyr)
+
+airquality %>%
+  summarise(across(everything(), ~sum(is.na(.))))
+```
+
+## Visualizando Dados Faltantes {data-background-color="#013220"}
+
+- Uso de gráficos para visualização
+- Identificação visual de padrões
+- Facilitação da interpretação
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# Calculando a quantidade de dados faltantes por variável
+missing_data <- airquality %>%
+  summarise(across(everything(), ~sum(is.na(.)))) %>%
+  pivot_longer(cols = everything(), names_to = "Variable", values_to = "Missing_Count")
+
+# Criando o gráfico de barras
+ggplot(missing_data, aes(x = Variable, y = Missing_Count, fill = Variable)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  labs(title = "Contagem de Dados Faltantes por Variável",
+       x = "Variável",
+       y = "Quantidade de Dados Faltantes")
+```
+
+# Tratamento dos Dados Faltantes
+
+## Remoção 
+
+- Linhas
+- Colunas
+
+## Imputação
+
+- Média
+- Regressão
+
+## Exemplo de Imputação pela Média
+
+```{r, echo=TRUE}
+# Imputação dos dados faltantes com a média
+airquality_imputed <- airquality %>%
+  mutate(across(where(is.numeric), ~ ifelse(is.na(.), mean(., na.rm = TRUE), .)))
+```
+
+Antes
+```{r, echo=TRUE}
+summary(airquality$Ozone)
+```
+
+Depois
+```{r, echo=TRUE}
+# Verificando o resultado da imputação
+summary(airquality_imputed$Ozone)
+```
+
+
+## Exemplo de Imputação por Regressão 
+
+```{r, echo=TRUE}
+# Removendo observações onde 'Ozone' é NA
+airquality_filtered <- airquality |> filter(!is.na(Ozone))
+
+# Criando um modelo de regressão usando 'Wind' como preditor para 'Ozone'
+model <- lm(Ozone ~ Wind + Temp, data = airquality_filtered, na.action = na.exclude)
+
+# Criando um dataset para as previsões onde 'Ozone' é NA
+missing_ozone <- airquality |> filter(is.na(Ozone)) |> select(Wind, Temp)
+
+# Usando o modelo para prever 'Ozone' com base em 'Wind'
+predicted_ozone <- predict(model, newdata = missing_ozone)
+
+# Substituindo os valores NA em 'Ozone' pelas previsões
+airquality_imputed <- airquality
+airquality_imputed$Ozone[is.na(airquality$Ozone)] <- predicted_ozone
+
+```
+
+## Resultado Imputação por Regressão
+
+Antes
+```{r, echo=TRUE}
+summary(airquality$Ozone)
+```
+
+Depois
+```{r, echo=TRUE}
+# Verificando o resultado da imputação
+summary(airquality_imputed$Ozone)
+```
+
+
+## Conclusão {data-background-color="#004F2D"}
+
+- Crucial para a limpeza de dados
+- Base para análises precisas
+- Preparação para correções futuras
