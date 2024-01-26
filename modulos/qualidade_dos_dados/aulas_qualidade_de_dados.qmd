@@ -1,0 +1,169 @@
+---
+title: "Qualidade de Dados"
+subtitle: "Abordagem prática para usar no dia a dia"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: black
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# Nestes slides {data-background-color="#E7AD52"}
+
+- Pacotes que vamos utilizar
+- Qualidade de Dados Categóricos
+- Qualidade de Dados Numéricos
+- Qualidade de Dados Tipo Texto
+- Qualidade de Dados Temporais (datas) 
+
+# Pacotes que vamos utilizar
+
+```{r, echo=TRUE}
+# Carregando os pacotes necessários
+library(dplyr) # Manipulação de dados
+library(ggplot2) # Visualização de dados
+library(janitor) # Limpeza e resumo dos dados
+library(lubridate) # Manipulação de datas
+library(naniar) # Visualização de dados faltantes
+library(stringr) # Manipulação de textos
+library(tidyr) # Para transformar os dados
+```
+
+# Qualidade de Dados Categóricos {data-background-color="#006837"}
+
+- Análise de balanceamento de classes.
+- Percentual de dados ausentes.
+
+## Qualidade de Dados Categóricos {style="font-size:.8em"}
+
+```{r, echo=TRUE}
+# Carregando o dataset 'iris' e criando dados ausentes para demonstração
+data("iris")
+set.seed(1234) # Para reprodutibilidade
+
+# Introduzindo NA's aleatoriamente em algumas observações da coluna Species
+iris$Species[sample(51:150, 25)] <- NA 
+
+# Análise de balanceamento de classes com 'tabyl' do 'janitor'
+iris_tabyl <- iris |> 
+  janitor::tabyl(Species)
+
+# Exibindo análise
+iris_tabyl
+```
+
+Aqui analisamos apenas a variável `Species` (única categórica). Mas no dia a dia repita para todas variáveis categóricas.
+
+# Qualidade de Dados Numéricos {data-background-color="#006837"}
+
+- Percentual de dados ausentes por variável.
+- Estatísticas descritivas: média, mediana, desvio padrão, mínimo e máximo.
+
+## Qualidade de Dados Numéricos {style="font-size:.6em"}
+
+```{r, echo=TRUE}
+# Carregando o dataset 'airquality'
+data("airquality")
+
+# Calculando as estatísticas descritivas e percentual de dados faltantes
+stats <- airquality |>
+  dplyr::select(-c("Month", "Day")) |> # Retiradas variáveis que,
+  # apesar de numéricas, sua análise deve ser feita como categoria.
+  dplyr::summarise(
+    dplyr::across(
+      dplyr::where(is.numeric),
+      list(
+        mean = ~mean(., na.rm = TRUE),
+        median = ~median(., na.rm = TRUE),
+        sd = ~sd(., na.rm = TRUE),
+        min = ~min(., na.rm = TRUE),
+        max = ~max(., na.rm = TRUE),
+        na_percentage = ~sum(is.na(.)) / n() * 100
+      ),
+      .names = "{.col}-{.fn}"  # Usando hífen como separador
+    )
+  ) |>
+  tidyr::pivot_longer(
+    cols = everything(), 
+    names_to = c("Variable", ".value"), 
+    names_sep = "-"  # Alinhando o separador com o usado acima
+  )
+
+# Exibindo as estatísticas descritivas
+stats
+```
+
+# Qualidade de Dados Tipo Texto {data-background-color="#006837"}
+
+- Análise do comprimento médio, máximo e mínimo dos textos.
+- Percentual de campos de texto ausentes.
+- Identificação de padrões comuns e preenchimentos preguiçosos.
+
+## Qualidade de Dados Tipo Texto {style="font-size:.6em"}
+
+```{r, echo=TRUE}
+# Lendo o dataset
+customer_satisfaction_df <- read.csv("data/customer_satisfaction.csv")
+
+# Análise de variáveis texto (coluna Feedback)
+text_analysis <- customer_satisfaction_df |>
+  summarise(
+    average_length = mean(str_length(Feedback), na.rm = TRUE),
+    max_length = max(str_length(Feedback), na.rm = TRUE),
+    min_length = min(str_length(Feedback), na.rm = TRUE),
+    na_empty_percent = sum(is.na(Feedback) | Feedback == "") / n() * 100,
+    unique_char_lines = sum(str_detect(Feedback, "^([a-zA-Z0-9])\\1*$"), na.rm = TRUE),
+    n = n()
+  )
+
+# Exibindo resultados
+text_analysis
+```
+
+
+- `average_length`: Comprimento médio dos feedbacks, medido em número de caracteres.
+- `max_length`: Comprimento máximo encontrado em um feedback.
+- `min_length`: Comprimento mínimo encontrado, podendo ser 0 para respostas vazias.
+- `na_percentage`: Porcentagem de feedbacks ausentes ou não preenchidos.
+- `unique_char_lines`: Número de feedbacks que consistem em repetições de um único caractere (ex: "aaaaa", ".").
+- `n`: Total de feedbacks analisados.
+
+# Qualidade de Dados Temporais {data-background-color="#006837"}
+
+- Identificação das datas mínimas e máximas.
+- Percentual de dados temporais ausentes.
+
+## Qualidade de Dados Temporais {style="font-size:.6em"}
+```{r, echo=TRUE}
+# Tendo certeza que 'Data_Entrada' é do tipo data
+str(customer_satisfaction_df$Data_Entrada)
+```
+
+```{r, echo=TRUE}
+# Convertendo 'Data_Entrada' para o tipo data com ymd
+# Registros incorretos serão convertidos em NA
+customer_satisfaction_df$Data_Entrada <- ymd(customer_satisfaction_df$Data_Entrada)
+str(customer_satisfaction_df$Data_Entrada)
+```
+
+```{r, echo=TRUE}
+# Análise de variáveis data
+date_analysis <- customer_satisfaction_df %>%
+  summarise(
+    min_date = min(Data_Entrada, na.rm = TRUE),
+    max_date = max(Data_Entrada, na.rm = TRUE),
+    na_percentage = sum(is.na(Data_Entrada)) / n() * 100
+  )
+
+# Exibindo resultados
+date_analysis
+```
+
+- `min_date`: Data mais antiga registrada de entrada de um cliente.
+- `max_date`: Data mais recente registrada de entrada de um cliente.
+- `na_percentage`: Porcentagem de registros onde a data de entrada não está disponível ou é inválida.
+
+

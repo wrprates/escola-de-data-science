@@ -1,0 +1,175 @@
+---
+title: "Dados Faltantes e Remoção de Outliers"
+subtitle: "Exemplos no R"
+title-slide-attributes:
+  data-background-image: remocao_outliers.jpg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: black
+    incremental: false
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# Nestes slides
+
+- Dados Faltantes
+- Outliers
+
+# Pacotes utilizados
+
+```{r, echo=TRUE}
+library(dplyr)
+```
+
+
+# Tratamento dos Dados Faltantes
+
+- Remoção
+- Imputação por média
+- Imputação por regressão
+
+## Remoção {style="font-size:.75em"}
+
+- **Linhas**: Excluir linhas com dados faltantes pode ser uma opção quando a **perda de informações é mínima** ou os dados ausentes são aleatórios e **não introduzem viés**.
+- **Colunas**: Remover colunas inteiras é útil quando uma **grande proporção de dados está ausente** ou a coluna **não é relevante** para a análise.
+
+### Exemplos de remoções
+
+Linhas com dados faltantes no dataset 'airquality'
+```{r, echo=TRUE, eval=FALSE}
+airquality |> na.omit()
+```
+
+Coluna específica (supondo que 'Solar.R' tenha muitos dados faltantes)
+```{r, echo=TRUE, eval=FALSE}
+airquality |> select(-Solar.R)
+```
+
+
+
+## Imputação
+
+- **Média**: Substituição de dados faltantes pela média da variável. Simples, mas eficaz para manter a média geral.
+- **Regressão**: Uso de modelos estatísticos para prever e substituir os dados faltantes. Mais complexo, mas pode refletir melhor as relações entre variáveis.
+
+
+## Exemplo de Imputação pela Média
+
+```{r, echo=TRUE}
+# Imputação dos dados faltantes com a média
+airquality_imputed <- airquality |>
+  mutate(across(where(is.numeric), ~ ifelse(is.na(.), mean(., na.rm = TRUE), .)))
+```
+
+Antes
+```{r, echo=TRUE}
+summary(airquality$Ozone)
+```
+
+Depois
+```{r, echo=TRUE}
+# Verificando o resultado da imputação
+summary(airquality_imputed$Ozone)
+```
+
+
+## Exemplo de Imputação por Regressão {style="font-size:.7em"}
+
+```{r, echo=TRUE}
+# Removendo observações onde 'Ozone' é NA
+airquality_filtered <- airquality |> filter(!is.na(Ozone))
+
+# Criando um modelo de regressão usando 'Wind' como preditor para 'Ozone'
+model <- lm(Ozone ~ Wind + Temp, data = airquality_filtered, na.action = na.exclude)
+model
+```
+
+```{r, echo=TRUE}
+# Criando um dataset para as previsões onde 'Ozone' é NA
+missing_ozone <- airquality |> filter(is.na(Ozone)) |> select(Wind, Temp)
+
+# Usando o modelo para prever 'Ozone' com base em 'Wind'
+predicted_ozone <- predict(model, newdata = missing_ozone)
+head(predicted_ozone, 5)
+```
+
+```{r, echo=TRUE}
+# Substituindo os valores NA em 'Ozone' pelas previsões
+airquality_imputed <- airquality
+airquality_imputed$Ozone[is.na(airquality$Ozone)] <- predicted_ozone
+```
+
+## Resultado Imputação por Regressão
+
+Antes
+```{r, echo=TRUE}
+summary(airquality$Ozone)
+```
+
+Depois
+```{r, echo=TRUE}
+# Verificando o resultado da imputação
+summary(airquality_imputed$Ozone)
+```
+
+# Tratamento de Outliers
+
+## Por que remover outliers {style="font-size:.75em"}
+
+> Outliers são observações que se desviam significativamente dos outros dados. Eles podem ser resultado de variabilidade no processo de medição ou indicar um erro experimental. A remoção de outliers é importante quando esses valores podem distorcer análises estatísticas e modelos preditivos.
+
+### Identificação e Remoção de Outliers
+A identificação de outliers pode ser feita através de métodos estatísticos, como a aplicação de regras baseadas em intervalos interquartis (IQR). Após a identificação, os outliers podem ser removidos para melhorar a qualidade dos dados.
+
+## Remoção de Outliers com IQR {style="font-size:.75em"}
+
+**O que é IQR**: O Intervalo Interquartil (IQR) é a diferença entre o terceiro quartil (Q3) e o primeiro quartil (Q1) dos dados. Representa a faixa média na qual a maioria dos dados se encontra.
+
+Regra do IQR para Outliers:
+
+- **Limite Inferior**: Q1 - 1.5 * IQR. Valores abaixo deste limite são considerados outliers inferiores.
+- **Limite Superior**: Q3 + 1.5 * IQR. Valores acima deste limite são considerados outliers superiores.
+
+**Por que usar IQR**: O IQR é robusto a outliers e fornece um método confiável para identificá-los. É menos afetado por valores extremos do que métodos baseados em média ou desvio padrão.
+
+## Exemplo de remoção de outliers por IQR {style="font-size:.75em"}
+
+```{r, echo=TRUE}
+# Calculando o IQR para 'Ozone'
+ozone_IQR <- IQR(airquality$Ozone, na.rm = TRUE)
+ozone_IQR
+```
+
+```{r, echo=TRUE}
+ozone_quartiles <- quantile(airquality$Ozone, c(0.25, 0.75), na.rm = TRUE)
+ozone_quartiles
+```
+
+```{r, echo=TRUE}
+# Definindo limites para outliers
+lower_bound <- ozone_quartiles[1] - 1.5 * ozone_IQR
+lower_bound
+```
+
+```{r, echo=TRUE}
+upper_bound <- ozone_quartiles[2] + 1.5 * ozone_IQR
+upper_bound
+```
+
+```{r, echo=TRUE}
+# Filtrando outliers
+airquality_no_outliers <- airquality |>
+  dplyr::filter(Ozone > lower_bound & Ozone < upper_bound)
+```
+
+## Outliers - Conclusão
+
+- A remoção de outliers deve ser considerada **cuidadosamente**, pois **pode alterar a estrutura dos dados**.
+
+- É essencial analisar se os outliers são **erros** genuínos ou se representam **variações importantes a serem estudadas**.
+
+- Em muitos casos, a remoção de outliers pode levar a **análises mais precisas e a modelos mais robustos**.
