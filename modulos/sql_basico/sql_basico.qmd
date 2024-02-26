@@ -1,0 +1,157 @@
+---
+title: "SQL Básico"
+subtitle: "Trabalhando com Bancos de Dados"
+title-slide-attributes:
+  data-background-image: db_bg.jpg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: black
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# O que veremos aqui?
+
+- Bancos de Dados Relacionais
+- SQL: conceito e variações
+
+# Banco de Dados Relacional
+> Conjunto de **tabelas** que **armazenam dados de forma estruturada**, onde cada tabela é uma coleção de registros com **linhas em colunas**.
+
+## Os Bancos de Dados Relacionais {background-color="#FFFFFF" style="font-size:.8em"}
+
+<center>
+![](bd_relacional_livraria.jpg){width=70%}
+</center>
+
+# SQL: A Linguagem dos Bancos de Dados Relacionais {style="font-size:.85em" background-color="#E7AD52"}
+    
+- "*Structured Query Language*", ou "Linguagem de Consulta Estruturada".    
+- **Linguagem padrão** para gerenciar e manipular bancos de dados relacionais.
+- Essencial para uma ampla gama de aplicações, desde análises de dados até sistemas de gestão empresarial.
+
+# Padrão ANSI SQL {background-color="#E7AD52"}
+    
+- Conjunto de normas do *American National Standards Institute*.
+- Garante a consistência e a portabilidade do SQL em diferentes plataformas.
+
+::: {.notes}
+Notas:
+:::
+
+
+## SGBDs e Variações de SQL {style="font-size:.8em" background-color="#87CEEB"}
+
+- **Sistemas de Gerenciamento de Banco de Dados (SGBDs)**
+    
+    - PostgreSQL, MySQL, MariaDB e SQLite: SGBDs populares, cada um com características próprias.
+    - Seguem o padrão ANSI SQL com extensões e variações únicas.
+- **Exemplos de Uso**
+    
+    - PostgreSQL: Operações complexas em finanças e saúde.
+    - MySQL/MariaDB: Desenvolvimento web, como WordPress e Joomla.
+    - SQLite: Aplicações leves e autônomas, como apps móveis.
+
+
+## Quando Utilizar Cada SGBD {style="font-size:.8em"}
+
+|Característica|PostgreSQL|MySQL / MariaDB |SQLite|
+|---|---|---|---|
+|Conformidade com ANSI SQL|Alta|Boa|Boa|
+|Complexidade de Operações|Bancos de dados grandes|Sites e apps web|Aplicações embutidas|
+|Tipo de Armazenamento|Servidor|Servidor|Local|
+|Uso Típico|Análises avançadas|Desenvolvimento web|Apps leves e autônomos|
+
+
+
+## Como um Cientista de Dados consome os dados do Banco? {style="font-size:.7em" background-opacity=".2" background-image="cientista_de_dados.jpg"}
+
+- Geralmente a empresa **já tem o banco estruturado** e as **principais tabelas prontas**.
+- Mas para **analisar dados**, geralmente vamos precisar **mesclar tabelas com base nas chaves** e **criar novas colunas** calculando alguns indicadores.
+- Com a linguagem `R`, por exemplo, podemos;
+  - Utilizar o pacote `DBI` na maioria dos casos.
+  - Com a função `dbGetQuery()` passamos a query SQL como parâmetro e conseguimos tranaformar o resultado em um *dataframe*.
+  - Com funções do pacote `dbplyr` também podemos utilizar a sintaxe do `dplyr` do R para manipular dados diretamente no banco.
+  - Ou seja, escrevemos o código em R, mas ele é traduzido para uma query em SQL.
+  
+# Principais comandos de SQL {background-color="#87CEEB"}
+
+- Aula prática! Significado das Queries com exemplos.
+- Vá ao site: [Programiz](https://www.programiz.com/sql/online-compiler/)
+- Se por alguma razão este site sair do ar, procure por "SQL online" no Google que você verá outras opções.
+- Outro exemplo online bem bacana para treino é o [w3schools](https://www.w3schools.com/sql/trysql.asp?filename=trysql_editor)
+
+## Queries para executarmos - Parte 1 {background-color="#87CEEB" style="font-size:.8em"}
+
+1. Selecionando Todos os Registros de uma Tabela:
+```
+SELECT * FROM Customers;
+```
+2. Selecionando Colunas Específicas:
+```
+SELECT first_name, age FROM Customers
+```
+3. Filtrando Registros com WHERE:
+```
+SELECT * FROM Orders WHERE amount > 300;
+```
+4. Ordenando Resultados:
+```
+SELECT * FROM Customers ORDER BY country;
+```
+
+
+## Queries para executarmos - Parte 2 - JOINs {background-color="#87CEEB" style="font-size:.8em"}
+1. `INNER JOIN` adicionando a coluna `amount` na tabela `Customers`:
+```
+SELECT Customers.first_name, Orders.amount
+FROM Customers
+JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+2. `LEFT JOIN` adicionando a coluna `amount` na tabela `Customers`
+```
+SELECT Customers.first_name, Orders.amount
+FROM Customers
+LEFT JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+3. `LEFT JOIN` adicionando `first_name` de `Customers` na tabela `Orders`:
+```
+SELECT Orders.order_id, Customers.first_name
+FROM Orders
+LEFT JOIN Customers ON Orders.customer_id = Customers.customer_id;
+```
+
+## Queries para executarmos - Parte 3 - GROUP BY {background-color="#87CEEB" style="font-size:.7em"}
+
+1. Agrupar por `country` e calcular idade média:
+```
+SELECT country, AVG(age) AS mean_age
+FROM Customers
+GROUP BY country;
+```
+2. Agrupar por país e calcular o valor médio dos pedidos:
+```
+SELECT country, AVG(amount)
+FROM Orders
+JOIN Customers ON Orders.customer_id = Customers.customer_id
+GROUP BY country;
+```
+Este comando agrupa os pedidos pelo país do cliente e calcula o valor médio dos pedidos para cada país.
+
+3. Agrupar pedidos por cliente e calcular a soma e a média dos valores:
+```
+SELECT Customers.first_name, SUM(Orders.amount) AS total_spent, AVG(Orders.amount) AS average_spent
+FROM Customers
+JOIN Orders ON Customers.customer_id = Orders.customer_id
+GROUP BY Customers.customer_id;
+```
+Aqui, os pedidos são agrupados por nome de cliente, e o total gasto e o valor médio gasto por cliente são calculados.
+
+# Obrigado!
+
