@@ -1,0 +1,180 @@
+---
+title: "Machine Learning"
+subtitle: "Conceitos e Exemplos"
+# title-slide-attributes:
+  # data-background-image: remocao_outliers.jpg
+  # data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: black
+    incremental: false
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# O que é Machine Learning?
+
+> "Trata de um braço da Inteligência artificial que consiste em programar computadores de tal forma que eles possam **aprender a partir de dados**."
+
+## Como *machine learning* ajuda os negócios em geral?
+
+ML é fundamental para extrair *insights* de grandes massas de dados e / ou de dados dispersos em várias fontes.
+
+- Grandes massas de dados (***big data***) $\rightarrow$ Análises são **humanamente inviáveis**, e ferramentas de planilhas eletrônicas e softwares convencionais não suportam.
+
+- **Dados dispersos** $\rightarrow$ Mesmo sem *big data*, o conhecimento é muito disperso e guardado em várias fontes de dados em diferentes áreas.
+
+#
+
+> Com isso, Machine Learning tem **saído do campo científico** e entrado cada vez mais no mundo dos negócios e no nosso dia a dia. Exemplos:
+
+- Recomendações em plataformas de streaming.
+- Recomendações de rotas em apps de trânsito.
+- Modelos de linguagem, como ChatGPT.
+
+
+# Objetivo principal em Data Science
+
+> Em um projeto de *Data Science* em uma empresa, o que realmente importa é responder a **pergunta de negócio**, resolvendo o problema e apontando caminhos a serem seguidos pela organização.
+
+# ML serve para tudo?
+
+Para isso, **nem sempre *machine learning* será a saída mais adequada**. Veja exemplos de problemas e as técnicas mais adequadas.
+
+## Problemas de negócios e técnicas para resolvê-los #1
+
+- *Quem são os clientes mais lucrativos*?
+  - **Solução**: consulta na base; painel de BI; filtros em **planilhas**.
+- *Existe diferença entre o cliente lucrativo e o mediano*?
+  - **Solução**: ser mais lucrativo pode ser acaso, por isso, indica-se métodos de **testes de hipóteses**.
+
+## Problemas de negócios e técnicas para resolvê-los #2
+
+- *Quais são as características dos clientes mais lucrativos*?
+  - **Solução**: o mais adequado são técnicas de agrupamento, dentro de aprendizagem **não supervisionada**, como *clustering*.
+- *Quais dos novos clientes se tornarão os mais lucrativos*?
+  - **Solução**: modelos **preditivos** são os mais adequados, dentro de **aprendizagem supervisionada**.
+  
+## Problemas de negócios e técnicas para resolvê-los #3
+
+- *Quais ações posso tomar para que um cliente venha a se enquadrar nos mais lucrativos*?
+  - **Solução**: modelos **prescritivos**, que misturam predições, técnicas de mineração e aprendizagem automática. É o ponto mais avançado em *Data Science*.
+
+Modelos prescritivos fornecem ações necessárias que têm maior probabilidade de resolver o problema de negócio em questão.
+
+# Exemplos de aplicações de *machine learning* em negócios
+
+## 
+
+1. **Manutenção**: recomendação de ações a serem tomadas, dado um determinado conjunto de erros.
+2. **Logística**: probabilidade de ocorrência de falha em uma entrega.
+3. ***Churn***: encontrar perfis de clientes que provavelmente iriam gerar *churn* e adaptar as estratégias de vendas.
+4. ***Turnover***: identificar colaboradores com alta probabilidade de pedirem para sair e tomar ações.
+5. **Sucessão** (RH): recomendar colaboradores com maior *fit* para assumir cargos de alta gestão.
+
+# Tipos de análise estatística de dados
+
+##
+
+Com base puramente estatística:
+
+- **Análise Descritiva** $\rightarrow$ Olhando para o passado.
+  - Univariada (qualidade de dados, distribuição, dados faltantes, máximo, mínimo).
+  - Bivariada (correlações, sumarizações, tabelas dinâmicas).
+
+Com base em *Machine Learning*:
+
+- **Análise Preditiva**
+- **Análise Prescritiva**
+
+## {style="font-size:.95em"}
+
+::: {.columns}
+::: {.column}
+
+**Análise Preditiva**
+
+* Olhando para futuro.
+* **Predições**: definem um resultado dadas as qualificações de uma situação.
+* **Previsões** (séries temporais): utilizam-se também de informações do próprio passado para prever o futuro (sazonalidade, tendências, eventos).
+
+:::
+::: {.column}
+
+**Análise Prescritiva**
+
+* Dar conselhos em possíveis saídas.
+* Recomendações de ações.
+* Quantificação ordenada com base em probabilidade.
+* Não são apenas algoritmos, mas uma mescla com **regras de negócios** e outras técnicas de mineração de dados.
+
+:::
+:::
+
+# Categorias de modelos
+
+> Para a parte de ML, podemos dividir os métodos em duas categorias:
+
+1. Aprendizado Supervisionado
+2. Aprendizado Não Supervisionado
+
+#
+
+::: {.columns}
+::: {.column}
+
+**Não supervisionado**
+
+- Não há um *target*.
+- Explorar dados desconhecidos.
+- Difícil de avaliar.
+
+:::
+::: {.column}
+
+**Supervisionado**
+
+- Há um *target* definido.
+- É possível medir os *outputs*.
+- Fácil de avaliar.
+
+:::
+:::
+
+#
+
+> Para os modelos supervisionados, temos os tipos de Regressão e de Classificação
+
+## Regressão e classificação {style="font-size:.8em"}
+
+::: {.columns}
+::: {.column}
+
+São subcategorias do **aprendizado de máquina supervisionado**
+
+- **Classificação**: predição em variáveis **categóricas** (binárias ou com *labels*).
+- **Regressão**: predição em variáveis **numéricas**.
+
+Um mesmo modelo pode servir tanto para regressão quanto classificação.
+
+Veja exemplos de perguntas que definem se um modelo será de regressão ou classificação $\rightarrow$
+
+:::
+::: {.column}
+
+| **Classificação**                         | **Regressão**                             |
+|-------------------------------------------|-------------------------------------------|
+| Chove ou não chove?                       | Quantos milímetros irá chover?            |
+| Faz hora extra ou não?                    | Quantas horas extras ele faz?             |
+| Qual faixa de etária?                     | Qual a idade?                             |
+| Qual faixa de renda?                      | Qual a renda?                             |
+
+:::
+:::
+
+## *Workflow* de *machine learning* {style="font-size:.7em"}
+
+![Machine Learning Workflow](ml_flow.png)
+
