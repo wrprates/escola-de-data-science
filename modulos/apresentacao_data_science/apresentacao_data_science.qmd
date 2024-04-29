@@ -1,0 +1,130 @@
+---
+title: "Ciência de Dados"
+subtitle: "Potencialize **Seu** Valor Profissional"
+title-slide-attributes:
+  data-background-image: home_office.jpg
+  data-background-opacity: ".2"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: night
+    incremental: true
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# Ciência de Dados é ... {background-image="secret.jpg" background-opacity=".2"}
+
+#
+> Área **multidisciplinar** que se utiliza principalmente, mas não apenas, de `método científico`, `estatística`, conhecimento de `negócio` e `ciência da computação` para responder **problemas de negócios**.
+
+## Wlademir Ribeiro Prates {background-color="#000" style="font-size: 0.85em;"}
+
+::: columns
+:::: column
+- **Cientista de Dados Senior**
+- Trabalha para **empresa de fora**
+- Mais de **500 alunos** em cursos **online**
+- **Professor experiente** em MBA's e faculdades **presenciais**
+- **PhD** em Finanças (UFSC)
+::::
+
+:::: column
+![](wlad.jpeg)
+::::
+
+:::
+
+
+## Eu sou Cientista de Dados, e é claro que ...
+
+- Eu faço minhas apresentações com a mesma tecnologia que faço relatórios top de linha para clientes globais.
+- Eu sempre vou buscar dados para fortalecer meus argumentos.
+- Gráficos e tabelas não podem faltar.
+
+# 1. Perspectivas {background-color="#141C33"}
+
+# O mercado de trabalho para profissionais de dados tem crescido nos últimos anos
+
+## Crescimento da área de Dados - BRASIL {style="font-size: 0.8em;"}
+
+```{r, echo=FALSE, warning=FALSE}
+library(readr)
+library(echarts4r)
+library(gtrendsR)
+
+trends_br <- read_csv("interesse_dados_brasil.csv") |>
+  dplyr::mutate(`Mês` = as.Date(paste0(`Mês`, "-01"), format = "%Y-%m-%d"))
+
+trends_br |>
+  e_charts(x = `Mês`) |>
+  e_line(serie = `Ciência de dados`) |>
+  e_line(serie = `Aprendizado de máquina`) |>
+  e_line(serie = `Análise de dados`) |>
+  e_tooltip(trigger = "axis") |> 
+  e_x_axis(type = "time") |> 
+  e_y_axis(name = "Pesquisas") |>
+  e_theme("chalk") |>
+  e_color(background = "#66000000")
+```
+<div style="font-size:11px;">Fonte: Google Trends</div>
+
+
+## Crescimento da área de Dados - MUNDO {style="font-size: 0.8em;"}
+
+```{r, echo=FALSE, warning=FALSE}
+trends_mundo <- read_csv("interesse_dados_mundo.csv") |>
+  dplyr::mutate(`Mês` = as.Date(paste0(`Mês`, "-01"), format = "%Y-%m-%d"))
+
+trends_mundo |>
+  e_charts(x = `Mês`) |>
+  e_line(serie = `Data Science`) |>
+  e_line(serie = `Machine Learning`) |>
+  e_line(serie = `Data Analysis`) |>
+  e_tooltip(trigger = "axis") |> 
+  e_x_axis(type = "time") |> 
+  e_y_axis(name = "Pesquisas") |>
+  e_theme("chalk") |>
+  e_color(background = "#66000000")
+```
+<div style="font-size:11px;">Fonte: Google Trends</div>
+
+
+# A demanda por **cientistas**, **engenheiros** e **analistas** de dados continua a aumentar {background-image="trabalho_em_equipe.jpeg" background-opacity=".2" style="font-size: 0.85em;"}
+
+# As oportunidades estão em várias indústrias, como aviação, logística, finanças, saúde (life science), entretenimento (filmes, música), RH, e muito mais! {style="font-size: 0.7em;"}
+
+# 2. Salários {background-color="#141C33"}
+
+## Salários Altos! {background-color="#141C33"}
+::: columns
+
+:::: column
+- Os salários para profissionais de dados são bastante `competitivos`
+- O salário pode variar de acordo com a **indústria, localização geográfica e nível de experiência**
+::::
+
+:::: column
+![](data_nerd_salarios.png)
+<div style="font-size:11px;">Fonte: <https://datanerd.tech/Salary></div>
+::::
+
+:::
+
+# Curioso sobre os salários no BR? Que tal pesquisarmos no Glassdoor ...
+
+# 3. Atuações em outros Países {background-color="#141C33"}
+
+## A área de dados no mundo
+
+- Ciência de Dados é uma habilidade valiosa em todo o mundo
+- Os profissionais de dados podem trabalhar em **empresas globais** ou **empresas locais**, dependendo de sua preferência
+- Desde 2023, o site `datanerd.tech` coleta diariamente cerca de **6500 novas vagas na área de dados todos os dias ao redor do mundo**!
+
+# E o melhor: trabalhe de onde quiser! {background-image="trabalho_remoto.jpeg" background-opacity=".2" style="font-size: 0.85em;"}
+
+## Vagas remotas!
+![](vagas_dados.png){fig-align="center"}
+
+# Obrigado!
