@@ -14,7 +14,7 @@ format:
 from: markdown+emoji
 ---
 
-# O que é Machine Learning?
+# O que é Machine Learning? {background-video="ml_video.mp4" background-opacity=".2"}
 
 > "Trata de um braço da Inteligência artificial que consiste em programar computadores de tal forma que eles possam **aprender a partir de dados**."
 
@@ -38,41 +38,6 @@ ML é fundamental para extrair *insights* de grandes massas de dados e / ou de d
 # Objetivo principal em Data Science
 
 > Em um projeto de *Data Science* em uma empresa, o que realmente importa é responder a **pergunta de negócio**, resolvendo o problema e apontando caminhos a serem seguidos pela organização.
-
-# ML serve para tudo?
-
-Para isso, **nem sempre *machine learning* será a saída mais adequada**. Veja exemplos de problemas e as técnicas mais adequadas.
-
-## Problemas de negócios e técnicas para resolvê-los #1
-
-- *Quem são os clientes mais lucrativos*?
-  - **Solução**: consulta na base; painel de BI; filtros em **planilhas**.
-- *Existe diferença entre o cliente lucrativo e o mediano*?
-  - **Solução**: ser mais lucrativo pode ser acaso, por isso, indica-se métodos de **testes de hipóteses**.
-
-## Problemas de negócios e técnicas para resolvê-los #2
-
-- *Quais são as características dos clientes mais lucrativos*?
-  - **Solução**: o mais adequado são técnicas de agrupamento, dentro de aprendizagem **não supervisionada**, como *clustering*.
-- *Quais dos novos clientes se tornarão os mais lucrativos*?
-  - **Solução**: modelos **preditivos** são os mais adequados, dentro de **aprendizagem supervisionada**.
-  
-## Problemas de negócios e técnicas para resolvê-los #3
-
-- *Quais ações posso tomar para que um cliente venha a se enquadrar nos mais lucrativos*?
-  - **Solução**: modelos **prescritivos**, que misturam predições, técnicas de mineração e aprendizagem automática. É o ponto mais avançado em *Data Science*.
-
-Modelos prescritivos fornecem ações necessárias que têm maior probabilidade de resolver o problema de negócio em questão.
-
-# Exemplos de aplicações de *machine learning* em negócios
-
-## 
-
-1. **Manutenção**: recomendação de ações a serem tomadas, dado um determinado conjunto de erros.
-2. **Logística**: probabilidade de ocorrência de falha em uma entrega.
-3. ***Churn***: encontrar perfis de clientes que provavelmente iriam gerar *churn* e adaptar as estratégias de vendas.
-4. ***Turnover***: identificar colaboradores com alta probabilidade de pedirem para sair e tomar ações.
-5. **Sucessão** (RH): recomendar colaboradores com maior *fit* para assumir cargos de alta gestão.
 
 # Tipos de análise estatística de dados
 
@@ -174,7 +139,42 @@ Veja exemplos de perguntas que definem se um modelo será de regressão ou class
 :::
 :::
 
+# ML serve para tudo?
+
+Para isso, **nem sempre *machine learning* será a saída mais adequada**. Veja exemplos de problemas e as técnicas mais adequadas.
+
+## Problemas de negócios e técnicas para resolvê-los #1
+
+- *Quem são os clientes mais lucrativos*?
+  - **Solução**: consulta na base; painel de BI; filtros em **planilhas**.
+- *Existe diferença entre o cliente lucrativo e o mediano*?
+  - **Solução**: ser mais lucrativo pode ser acaso, por isso, indica-se métodos de **testes de hipóteses**.
+
+## Problemas de negócios e técnicas para resolvê-los #2
+
+- *Quais são as características dos clientes mais lucrativos*?
+  - **Solução**: o mais adequado são técnicas de agrupamento, dentro de aprendizagem **não supervisionada**, como *clustering*.
+- *Quais dos novos clientes se tornarão os mais lucrativos*?
+  - **Solução**: modelos **preditivos** são os mais adequados, dentro de **aprendizagem supervisionada**.
+  
+## Problemas de negócios e técnicas para resolvê-los #3
+
+- *Quais ações posso tomar para que um cliente venha a se enquadrar nos mais lucrativos*?
+  - **Solução**: modelos **prescritivos**, que misturam predições, técnicas de mineração e aprendizagem automática. É o ponto mais avançado em *Data Science*.
+
+Modelos prescritivos fornecem ações necessárias que têm maior probabilidade de resolver o problema de negócio em questão.
+
+# Exemplos de aplicações de *machine learning* em negócios
+
+## 
+
+1. **Manutenção**: recomendação de ações a serem tomadas, dado um determinado conjunto de erros.
+2. **Logística**: probabilidade de ocorrência de falha em uma entrega.
+3. ***Churn***: encontrar perfis de clientes que provavelmente iriam gerar *churn* e adaptar as estratégias de vendas.
+4. ***Turnover***: identificar colaboradores com alta probabilidade de pedirem para sair e tomar ações.
+5. **Sucessão** (RH): recomendar colaboradores com maior *fit* para assumir cargos de alta gestão.
+
 ## *Workflow* de *machine learning* {style="font-size:.7em"}
 
-![Machine Learning Workflow](ml_flow.png)
+![](ml_flow.png)
 
