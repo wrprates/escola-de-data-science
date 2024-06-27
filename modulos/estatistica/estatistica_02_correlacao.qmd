@@ -1,0 +1,56 @@
+---
+title: "Estatística Básica"
+subtitle: "Correlação"
+author: "Wlademir Prates"
+format:
+  revealjs: 
+    theme: black
+    incremental: false
+    self-contained: true
+    transition: slide
+from: markdown+emoji
+---
+
+# Como saber o quanto uma variável anda junto com outra?
+
+- Para variáveis numéricas, usamos o coeficiente de correlação
+  - Indica tanto a direção quanto a força da relação (**varia de -1 a 1**).
+
+
+# Matriz de correlação
+
+## Matriz de correlação
+
+```{r, echo=TRUE}
+cor(mtcars)
+```
+
+
+## Mapa de calor (*heatmap*) - Código
+
+```{r, echo=TRUE}
+library(echarts4r)
+cor_chart <- cor(mtcars) |>
+  e_charts() |>
+  e_correlations(
+    order = "hclust",
+    visual_map = FALSE
+  ) |>
+  e_visual_map(
+    min = -1,
+    max = 1
+  ) |>
+  e_tooltip()
+```
+## Mapa de calor (*heatmap*)
+```{r}
+cor_chart
+```
+
+## Mantendo apenas uma diagonal
+
+```{r, echo=TRUE}
+library(rstatix)
+replace_upper_triangle(cor(mtcars), by = NA, diagonal = TRUE)
+```
+
