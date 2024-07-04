@@ -20,28 +20,30 @@ Seu **primeiro projeto é analisar os dados de satisfação dos clientes** para 
 Vamos ver como os **conceitos básicos de estatística** podem te ajudar nessa missão.
 
 # Objetivos {background-color="#fff"}
-- Entender os conceitos básicos de estatística.
-- Aplicar esses conceitos em análises práticas de dados.
-- Preparar-se para desafios reais na carreira de ciência de dados.
+
+-   Entender os conceitos básicos de estatística.
+-   Aplicar esses conceitos em análises práticas de dados.
+-   Preparar-se para desafios reais na carreira de ciência de dados.
 
 # Definições Básicas {background-color="#d4edda"}
 
-- **Estatística:** Ciência de coletar, organizar, analisar e interpretar dados.
-- **Estatística Descritiva:** Descrição e resumo dos dados.
-- **Estatística Inferencial:** Generalização e inferência a partir de uma amostra.
+-   **Estatística:** Ciência de coletar, organizar, analisar e interpretar dados.
+-   **Estatística Descritiva:** Descrição e resumo dos dados.
+-   **Estatística Inferencial:** Generalização e inferência a partir de uma amostra.
 
 # Aplicações
 
 No seu novo projeto, você usará estatística para:
 
-- Analisar a satisfação dos clientes.
-- Identificar tendências e padrões.
-- Fornecer insights baseados em dados para melhorar os serviços.
+-   Analisar a satisfação dos clientes.
+-   Identificar tendências e padrões.
+-   Fornecer insights baseados em dados para melhorar os serviços.
 
 ## Tipos de Dados {style="font-size:.8em"}
 
 ### Dados Qualitativos
-- Variáveis Categóricas (ex.: feedback positivo/negativo, gênero)
+
+-   Variáveis Categóricas (ex.: feedback positivo/negativo, gênero)
 
 ```{r, echo=TRUE}
 qualitativas <- c("Positivo", "Negativo", "Positivo", "Negativo")
@@ -49,7 +51,8 @@ qualitativas
 ```
 
 ### Dados Quantitativos
-- Variáveis Numéricas (ex.: idade dos clientes, pontuação de satisfação)
+
+-   Variáveis Numéricas (ex.: idade dos clientes, pontuação de satisfação)
 
 ```{r, echo=TRUE}
 quantitativas <- c(7.8, 6.5, 8.9, 7.2)
@@ -60,15 +63,16 @@ quantitativas
 
 ## Medidas Estatísticas Aplicáveis {background-color="#4B4B4B" style="font-size:.85em"}
 
-- As **medidas de tendência central** (média, mediana, moda) e **dispersão** (variância, desvio padrão, amplitude, IQR) são aplicáveis às **variáveis quantitativas**.
-- Para **variáveis qualitativas**, devemos focar em:
-  - **Distribuição de frequências**: Contagem de ocorrências em cada categoria.
-  - **Gráficos de barras / colunas**: Visualização da distribuição das categorias.
-  - **Medidas de associação**: Como coeficiente de contingência e Cramér's V para analisar a relação entre variáveis qualitativas.
+-   As **medidas de tendência central** (média, mediana, moda) e **dispersão** (variância, desvio padrão, amplitude, IQR) são aplicáveis às **variáveis quantitativas**.
+-   Para **variáveis qualitativas**, devemos focar em:
+    -   **Distribuição de frequências**: Contagem de ocorrências em cada categoria.
+    -   **Gráficos de barras / colunas**: Visualização da distribuição das categorias.
+    -   **Medidas de associação**: Como coeficiente de contingência e Cramér's V para analisar a relação entre variáveis qualitativas.
 
 # Medidas de Tendência Central {background-color="#d1ecf1"}
 
 # Média
+
 Imagine que você precisa calcular a pontuação média de satisfação dos clientes. A média é a soma dos valores dividida pelo número de observações.
 
 ```{r, echo=TRUE}
@@ -76,8 +80,8 @@ notas <- c(85, 90, 78, 85, 92, 88)
 mean(notas)
 ```
 
-
 # Mediana
+
 Às vezes, a média pode ser enganosa se houver valores extremos. A mediana é o valor central quando os dados estão ordenados.
 
 ```{r, echo=TRUE}
@@ -85,6 +89,7 @@ median(notas)
 ```
 
 # Moda
+
 Se você quer saber qual pontuação de satisfação é a mais comum, você precisa calcular a moda.
 
 ```{r, echo=TRUE}
@@ -104,10 +109,11 @@ moda(notas)
 # Medidas de Dispersão {background-color="#d1ecf1"}
 
 ## Variância e Desvio Padrão
+
 Para entender a variabilidade das pontuações de satisfação, você pode calcular a variância e o desvio padrão.
 
-- **Variância:** Média dos quadrados dos desvios em relação à média
-- **Desvio Padrão:** Raiz quadrada da variância
+-   **Variância:** Média dos quadrados dos desvios em relação à média
+-   **Desvio Padrão:** Raiz quadrada da variância
 
 ```{r, echo=TRUE}
 variancia <- var(notas)
@@ -117,6 +123,7 @@ desvio_padrao
 ```
 
 # Amplitude
+
 A amplitude te ajuda a ver a diferença entre a pontuação mais alta e a mais baixa.
 
 ```{r, echo=TRUE}
@@ -127,8 +134,9 @@ amplitude_diff
 ```
 
 ## Intervalo Interquartil (IQR) {style="font-size:.8em"}
-- O Intervalo Interquartil (IQR) é a diferença entre o terceiro quartil (Q3) e o primeiro quartil (Q1).
-- O IQR concentra a maior parte das observações, excluindo os outliers.
+
+-   O Intervalo Interquartil (IQR) é a diferença entre o terceiro quartil (Q3) e o primeiro quartil (Q1).
+-   O IQR concentra a maior parte das observações, excluindo os outliers.
 
 ### Cálculo do IQR
 
@@ -180,6 +188,7 @@ highchart() |>
 # Exemplo Prático: Análise de Satisfação dos Clientes {background-color="#343a40"}
 
 ## Cálculos para Exemplo Prático {style="font-size:.8em"}
+
 Vamos consolidar tudo isso com um exemplo prático.
 
 Imagine que essas são as pontuações de satisfação de um pequeno grupo de clientes.
@@ -203,6 +212,7 @@ amplitude_diff <- diff(amplitude)
 ```
 
 ## Resultados
+
 ```{r, echo=TRUE}
 resultados <- data.frame(
   Media = media,
@@ -218,23 +228,24 @@ resultados
 
 ## Interpretação dos Resultados de Satisfação dos Clientes {background-color="#343a40" style="font-size:.8em"}
 
-- **Média:** `r media` (Alta satisfação geral)
-- **Mediana:** `r mediana` (Dados simétricos)
-- **Moda:** `r ifelse(is.na(moda_pontuacao), "Nenhuma", moda_pontuacao)` (Valor mais frequente)
-- **Desvio Padrão:** `r round(desvio_padrao, 2)` (Dispersão moderada)
-- **Amplitude:** `r amplitude_diff` (Variação significativa)
-- **IQR:** `r iqr` (Concentração excluindo outliers)
+-   **Média:** `r media` (Alta satisfação geral)
+-   **Mediana:** `r mediana` (Dados simétricos)
+-   **Moda:** `r ifelse(is.na(moda_pontuacao), "Nenhuma", moda_pontuacao)` (Valor mais frequente)
+-   **Desvio Padrão:** `r round(desvio_padrao, 2)` (Dispersão moderada)
+-   **Amplitude:** `r amplitude_diff` (Variação significativa)
+-   **IQR:** `r iqr` (Concentração excluindo outliers)
 
 ### Conclusão
-- Alta satisfação dos clientes com alguma variação
-- Medidas ajudam a identificar áreas de melhoria e monitorar a satisfação
 
+-   Alta satisfação dos clientes com alguma variação
+-   Medidas ajudam a identificar áreas de melhoria e monitorar a satisfação
 
 # Encerramento e Q&A
 
 ## Resumo
-- Entendemos os conceitos básicos de estatística.
-- Aprendemos a calcular medidas de tendência central e dispersão.
-- Aplicamos esses conceitos em um exemplo prático relevante para sua carreira.
+
+-   Entendemos os conceitos básicos de estatística.
+-   Aprendemos a calcular medidas de tendência central e dispersão.
+-   Aplicamos esses conceitos em um exemplo prático relevante para sua carreira.
 
 # Perguntas?

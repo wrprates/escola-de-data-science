@@ -1,4 +1,6 @@
-x <- c(1, 1, 2, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 13, 14, 21, 76)
+# x <- c(1, 1, 2, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 13, 14, 21, 76)
+x <- c(1, 2, 3, 4, 4, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15, 29, 75)
+
 quantile(x)
 boxplot(x)
 IQR(x)
@@ -27,11 +29,11 @@ data <- readr::read_csv(
   "https://raw.githubusercontent.com/wrprates/open-data/master/ibm_hr_emplyee_attrition.csv"
 )
 
-sorted_data <- data |>
-  dplyr::group_by(JobRole) |>
-  dplyr::mutate(median_income = median(MonthlyIncome, na.rm = TRUE)) |>
-  dplyr::ungroup() |>
-  dplyr::mutate(JobRole = factor(JobRole, levels = JobRole[order(median_income)]))
+# sorted_data <- data |>
+#   dplyr::group_by(JobRole) |>
+#   dplyr::mutate(median_income = median(MonthlyIncome, na.rm = TRUE)) |>
+#   dplyr::ungroup() |>
+#   dplyr::mutate(JobRole = factor(JobRole, levels = JobRole[order(median_income)]))
 
 median_income_df <- data %>%
   group_by(JobRole) %>%
