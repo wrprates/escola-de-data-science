@@ -1,0 +1,36 @@
+---
+title: "Relatório Correlação"
+author: "Wlademir Prates"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+## Introdução
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Heatmap
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+library(echarts4r)
+cor_chart <- cor(mtcars) |>
+  e_charts() |>
+  e_correlations(
+    order = "hclust",
+    visual_map = FALSE
+  ) |>
+  e_visual_map(
+    min = -1,
+    max = 1
+  ) |>
+  e_tooltip()
+cor_chart
+```
+
+## Conclusão / Interpretação
+
+Blah

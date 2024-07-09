@@ -11,20 +11,51 @@ format:
 from: markdown+emoji
 ---
 
-# Como saber o quanto uma variável anda junto com outra?
+# Como saber o quanto uma variável anda junto com outra? {style="font-size:.85em"}
 
 - Para variáveis numéricas, usamos o coeficiente de correlação
   - Indica tanto a direção quanto a força da relação (**varia de -1 a 1**).
 
+# Alguns conceitos básicos ... {style="font-size:.65em"}
+
+- **Relação Linear**: As variáveis se movem em uma linha reta, ou seja, **mudanças em uma variável correspondem a mudanças proporcionais e constantes na outra variável**. Ex.: salário e experiência; distância percorrida e tempo. 
+
+- **Relação Monotônica**: As variáveis se movem na mesma direção, **mas não necessariamente de forma proporcional ou constante**. Pode ser crescente ou decrescente. À medida que uma variável aumenta, a outra também aumenta (ou diminui) consistentemente, mas não precisa seguir uma linha reta. Ex.: Temperatura e consumo de sorvete; Idade e risco de certas doenças.
+
+## Os principais métodos de cálculo para o coeficiente de correlação {style="font-size:.55em"}
+- **Pearson**
+  - Tipo: Linear
+  - Medição: Correlação linear entre variáveis contínuas
+  - Suposições: Variáveis normalmente distribuídas e relação linear
+  - Usar em: variáveis contínuas.
+- **Spearman**
+  - Tipo: Monotônica
+  - Medição: Correlação de ranks (ordena, rankeia, compara posições no ranking)
+  - Suposições: Variáveis ordinais, intervalares ou de razão; relação monotônica
+  - Usar em: muitos empates, dados maiores.
+- **Kendall**
+  - Tipo: Monotônica
+  - Medição: Correlação de pares (concordâncias e discordâncias - os pares são iguais? Sim ou não...)
+  - Suposições: Variáveis ordinais, intervalares ou de razão; relação monotônica
+  - Usar em: pequenas amostras, poucos empates.
 
 # Matriz de correlação
 
-## Matriz de correlação
+## Matriz de correlação {style="font-size:.85em"}
 
 ```{r, echo=TRUE}
-cor(mtcars)
+library(dplyr)
+cor(mtcars) |>  as_tibble()
 ```
 
+## Mantendo apenas uma diagonal {style="font-size:.85em"}
+
+Você pode encontrar também a matriz com apenas uma diagonal.
+
+```{r, echo=TRUE}
+library(rstatix)
+replace_upper_triangle(cor(mtcars), by = NA, diagonal = TRUE) |> as_tibble()
+```
 
 ## Mapa de calor (*heatmap*) - Código
 
@@ -42,15 +73,76 @@ cor_chart <- cor(mtcars) |>
   ) |>
   e_tooltip()
 ```
+
 ## Mapa de calor (*heatmap*)
 ```{r}
 cor_chart
 ```
 
-## Mantendo apenas uma diagonal
+# Comecei com a matriz de correlação, mas o `scatterplot` é com certeza o gráfico mais usado para correlação {style="font-size:.7em"}
 
+## `Scatterplot` para variáveis contínuas {background-color="#f2f2f2"  style="font-size:.7em"}
 ```{r, echo=TRUE}
-library(rstatix)
-replace_upper_triangle(cor(mtcars), by = NA, diagonal = TRUE)
+mtcars |>
+  e_charts(mpg) |>
+  e_scatter(wt, qsec)
 ```
 
+
+# Exemplo com dados mais próximos da realidade
+
+## Correlação com dados de RH - Código {style="font-size:.65em"}
+```{r, echo=TRUE}
+library(dplyr)
+library(readr)
+dados_rh <- read_csv(
+  "https://raw.githubusercontent.com/wrprates/open-data/master/ibm_hr_emplyee_attrition.csv"
+)
+dados_rh_num <- dados_rh |>
+  select_if(is.numeric) |>
+  select(
+    -c(
+      Education,
+      EmployeeNumber,
+      EmployeeCount,
+      JobLevel,
+      StockOptionLevel,
+      WorkLifeBalance,
+      StandardHours
+    )
+  )
+correl_dados_rh_num <- dados_rh_num |> cor(method = "spearman")
+```
+
+## Matriz de correlação de RH {background-color="#f2f2f2" style="font-size:.85em"}
+
+```{r}
+library(echarts4r)
+correl_dados_rh_num |>
+  e_charts() |>
+  e_correlations(
+    order = "hclust",
+    visual_map = FALSE
+  ) |>
+  e_visual_map(
+    min = -1,
+    max = 1
+  ) |>
+  e_tooltip()
+```
+
+## Matriz de correlação de RH - Código {style="font-size:.85em"}
+
+```{r, echo=TRUE}
+correl_dados_rh_num |> as_tibble()
+```
+
+## `scatterplot` {background-color="#f2f2f2"}
+```{r}
+dados_rh_num |>
+  e_charts(HourlyRate) |>
+  e_scatter(MonthlyIncome, TotalWorkingYears)
+```
+
+# Desafio {style="font-size:.65em"}
+> Obtenha alguma tabela de dados, de preferência algo que você usa em seu dia a dia no trabalho, e crie um gráfico do estilo *heatmap* interativo usando o pacote `echarts4r` com a matriz de correlação para as variáveis numéricas. Crie um pequeno relatório interativo em `html` usando o pacote `quarto`, onde você deverá incluir o gráfico do *heatmap* e uma interpretação acerca das correlações encontradas. Para o cálculo da correlação escolha entre o método de Pearson ou de Spearman e brevemente justifique sua decisão no relatório.
