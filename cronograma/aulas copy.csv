@@ -1,0 +1,114 @@
+Módulo;Aula;Duração (min)
+Comece Aqui;Boas Vindas;00:01:09
+Decolando sua Carreira;Bem-vindo ao módulo que vai transformar sua carreira!;00:02:58
+Decolando sua Carreira;Mercado de trabalho (perspectivas, salários, atuações em outros países);00:10:43
+Decolando sua Carreira;Habilidades necessárias para trabalhar com dados (soft e hard skills);00:17:23
+Decolando sua Carreira;Papeis e Funções na Área de Dados;00:08:52
+Decolando sua Carreira;O impacto da análise de dados nas organizações (empresas que usam versus empresas que não usam);00:09:37
+Introdução à Linguagem R;Linguagem R: Origens e Aplicações;00:05:08
+Introdução à Linguagem R;A Estrutura Em Volta Da Linguagem R;00:10:05
+Introdução à Linguagem R;Instalando o R;00:13:42
+Introdução à Linguagem R;Comunidade R, a Empresa Posit e Pacotes Open Source;00:13:35
+Introdução à Linguagem R;O RStudio: Posit Cloud, RStudio Server (Workbench), RStudio Desktop;00:12:14
+Introdução à Linguagem R;Projetos, Scripts e Pacotes no Rstudio;00:15:38
+Introdução à Linguagem R;Transformação de Dados com o Pacote dplyr;00:27:27
+Introdução à Linguagem R;Leitura de Dados CSV no R;00:27:42
+Introdução à Linguagem R;Leitura de Dados de Excel no R;00:21:34
+O Essencial de Git;Introdução ao módulo;00:02:14
+O Essencial de Git;Conceitos iniciais;00:13:41
+O Essencial de Git;Branches no GIT: Como é o fluxo de trabalho ideal;00:18:57
+O Essencial de Git;Instalando GIT e criando conta no GitHub;00:06:29
+O Essencial de Git;Como criar um repositório no GIT e subir no GitHub (usando interface VISUAL);00:14:02
+O Essencial de Git;Criando repositório local e subindo para o GitHub (na LINHA DE COMANDO);00:14:07
+O Essencial de Git;Trabalhando de forma colaborativa: branches por funcionalidades e resolução de conflitos;00:18:02
+O Essencial de Git;Comandos extras: git pull e uso do git reset como emergência;00:23:45
+O Essencial de Git;GIT: próximos passos para você;00:06:18
+Básico de SQL;Bancos de Dados Relacionais;00:12:23
+Básico de SQL;SQL: A Linguagem dos BD's Relacionais, suas variações e usos para Cientistas de Dados;00:14:49
+Básico de SQL;Principais comandos SQL - Parte 1;00:07:16
+Básico de SQL;Principais comandos SQL - Parte 2 - JOINs;00:06:26
+Básico de SQL;Principais comandos SQL - Parte 3 - GROUP BY;00:07:58
+Estatística Básica;Intro e Bônus - Relatórios Interativos;00:01:59
+Estatística Básica;Setup para o módulo;00:07:35
+Estatística Básica;Definições Básicas;00:06:15
+Estatística Básica;Tipos de Dados;00:05:19
+Estatística Básica;Medidas Centrais;00:14:54
+Estatística Básica;Medidas de Dispersão;00:14:11
+Estatística Básica;Amplitude;00:04:13
+Estatística Básica;IQR - Intervalo Interquartil;00:04:52
+Análise de Qualidade de Dados;Introdução: Por que a Qualidade dos Dados é importante?;00:03:29
+Análise de Qualidade de Dados;Criando e Utilizando um Dicionário de Dados;00:04:55
+Análise de Qualidade de Dados;Estratégia para Análise de Qualidade de Dados;00:03:33
+Análise de Qualidade de Dados;Análise de Qualidade de Dados Categóricos + Slides;00:09:27
+Análise de Qualidade de Dados;Análise de Qualidade de Dados Numéricos;00:10:50
+Análise de Qualidade de Dados;Análise de Qualidade de Dados Tipo Texto;00:10:10
+Análise de Qualidade de Dados;Análise de Qualidade de Dados Tipo Data;00:07:59
+Análise de Qualidade de Dados;Dados Faltantes e Imputação de Dados + Slides;00:13:03
+Análise de Qualidade de Dados;Tratamento de Outliers;00:06:50
+Análise de Hipóteses;Introdução;00:03:30
+Análise de Hipóteses;Literatura recomendada;00:02:07
+Análise de Hipóteses;Introdução à Análise de Hipóteses;00:08:03
+Análise de Hipóteses;Por que usar Testes de Hipóteses?;00:03:24
+Análise de Hipóteses;Hipótese Nula (H0) e Alternativa (H1);00:06:49
+Análise de Hipóteses;Qual é a decisão em um Teste de Hipóteses?;00:05:34
+Análise de Hipóteses;Testes Paramétricos e Não Paramétricos;00:12:13
+Análise de Hipóteses;Testes Pareados e Não Pareados;00:03:10
+Análise de Hipóteses;Tipos de Testes (Explicação Geral);00:04:16
+Análise de Hipóteses;Testes para Diferenças de Proporções;00:13:58
+Análise de Hipóteses;Testes para Diferenças com uma Amostra (one sample);00:14:00
+Análise de Hipóteses;Testes para Diferenças com duas Amostras (two sample);00:14:31
+Análise de Hipóteses;Testes para Diferenças Entre Mais de Dois Grupos;00:15:15
+Análise de Hipóteses;Conclusão: Fluxograma para saber qual teste aplicar;00:04:28
+Principais Modelos de Machine Learning;O que é Machine Learning?;00:13:54
+Principais Modelos de Machine Learning;Tipos de Análises de Dados;00:11:00
+Principais Modelos de Machine Learning;Tipos de Aprendizado de Máquina;00:10:38
+Principais Modelos de Machine Learning;Exemplos de aplicação de ML;00:17:29
+Principais Modelos de Machine Learning;Workflow de Machine Learning;00:08:38
+Principais Modelos de Machine Learning;Introdução ao módulo;00:03:04
+Principais Modelos de Machine Learning;[K-means] Explicação;00:14:38
+Principais Modelos de Machine Learning;[K-means] Exemplo com dados aleatórios;00:22:18
+Principais Modelos de Machine Learning;[K-means] Exemplo prático;00:18:33
+Principais Modelos de Machine Learning;[PCA] Explicação;00:15:27
+Principais Modelos de Machine Learning;[PCA] Aplicação prática;00:13:05
+Data Science Business Canva;Data Science Business Canva;00:05:39
+Data Science Business Canva;Aplicação do Canvas em Case prático;00:30:59
+Encontros Ao Vivo;02-05-2024 - O que é Ciência de Dados?;
+Encontros Ao Vivo;09-05-2024 - Como fazer meu primeiro relatório em R?;
+Encontros Ao Vivo;16-05-2024 - Carreira + Criando a primeira Hipótese de Negócio;
+Encontros Ao Vivo;21-05-2024 - [CASE E-COMMERCE] Parte 1 - Estruturação dos dados;
+Encontros Ao Vivo;28-05-2024 - Hard Skills comuns em vagas / visão geral mercado de trabalho;
+Encontros Ao Vivo;04-06-2024 - Revisão e Dicas Práticas de GIT + GitHub, Gitlab, etc;
+Encontros Ao Vivo;11-06-2024 - [Data Science Business Canva] - Exemplo prática com case de Ecommerce - parte 01;
+Encontros Ao Vivo;20-06-2024 - [ESTATÍSTICA - Aula 01] - Estatísticas Descritivas;
+Encontros Ao Vivo;22-06-2024 - [AULA MASTER] LinkedIn e CV;
+Encontros Ao Vivo;27-06-2024 - [Data Science Business Canva] - Exemplo prática com case de Ecommerce - parte 02;
+Encontros Ao Vivo;04-07-2024 - [Estatística] Correlação;
+Transição de Carreira Segura;Introdução;
+Transição de Carreira Segura;Como vai funcionar o Módulo;
+Transição de Carreira Segura;Domine suas Finanças: Controle Financeiro;
+Transição de Carreira Segura;Estimando seus Gastos Mensais: Orçamento Financeiro Pessoal;
+Transição de Carreira Segura;Seu Colchão Financeiro: Reserva de Emergência;
+Transição de Carreira Segura;Se Livrando das Dívidas;
+Transição de Carreira Segura;Economizar e Investir;
+Transição de Carreira Segura;Seguros: Protegendo Você e Sua Família;
+Transição de Carreira Segura;Acertando nas Decisões Financeiras: Finanças Comportamentais;
+Transição de Carreira Segura;Conclusão;
+Análise Financeira Avançada com R;Apresentação;
+Análise Financeira Avançada com R;Importância da Matemática Financeira em Finanças;
+Análise Financeira Avançada com R;Capitalização composta e desconto de taxas no R;
+Análise Financeira Avançada com R;Equivalência de taxas no R;
+Análise Financeira Avançada com R;Revisão Conceitual de Engenharia Econômica: TIR, TIRM, Payback, VPL;
+Análise Financeira Avançada com R;Funções de Engenharia Econômica no R: Pacote tidyquant;
+Análise Financeira Avançada com R;[Bônus] Funções de Matemática Financeira do tidyquant;
+Análise Financeira Avançada com R;VPL e TIR no R, comparando com Excel e HP12c;
+Análise Financeira Avançada com R;VPL e TIR para Diversos Projetos;
+Análise Financeira Avançada com R;Calculando a TIRM no R;
+Análise Financeira Avançada com R;Payback Simples e Descontado: aplicação no R;
+Análise Financeira Avançada com R;Comparação de projetos entre TIR, TIRM, VPL e Payback no R;
+Séries Temporais;Importância das Séries Temporais em Finanças;
+Séries Temporais;Principais bibliotecas para séries temporais financeiras / econômicas no R;
+Séries Temporais;Baixando séries macroeconômicas no R;
+Séries Temporais;CASE: Comparando séries macroeconômicas no R parte I;
+Séries Temporais;CASE: Comparando séries macroeconômicas no R parte II;
+Séries Temporais;CASE: Séries de AÇÕES de empresas no R - Parte I;
+Séries Temporais;Case de Análise de Séries de Ações no R - Parte I - Organizando Cotações;

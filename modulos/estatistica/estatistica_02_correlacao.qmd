@@ -138,7 +138,7 @@ correl_dados_rh_num |> as_tibble()
 ```
 
 ## `scatterplot` {background-color="#f2f2f2"}
-```{r}
+```{r, echo=TRUE}
 dados_rh_num |>
   e_charts(HourlyRate) |>
   e_scatter(MonthlyIncome, TotalWorkingYears)
@@ -146,3 +146,62 @@ dados_rh_num |>
 
 # Desafio {style="font-size:.65em"}
 > Obtenha alguma tabela de dados, de preferência algo que você usa em seu dia a dia no trabalho, e crie um gráfico do estilo *heatmap* interativo usando o pacote `echarts4r` com a matriz de correlação para as variáveis numéricas. Crie um pequeno relatório interativo em `html` usando o pacote `quarto`, onde você deverá incluir o gráfico do *heatmap* e uma interpretação acerca das correlações encontradas. Para o cálculo da correlação escolha entre o método de Pearson ou de Spearman e brevemente justifique sua decisão no relatório.
+
+# Coeficiente de Associação para variáveis categóricas -  Cramer's V {style="font-size:.75em"}
+O coeficiente Cramér's V é uma medida de associação entre duas variáveis categóricas, que avalia a força da relação entre elas. Ele varia de 0 a 1, onde:
+
+- 0 indica nenhuma associação entre as variáveis.
+- 1 indica uma associação perfeita.
+
+
+## Calculando no R para uma variável
+
+Deixando o dataset apenas com colunas categóricas:
+```{r, echo = TRUE}
+dados_rh_cat <- dados_rh |>
+  select_if(is.character) |>
+  select(-Over18)
+
+library(rcompanion)
+
+# Relacionando Departamento e área de educação
+rcompanion::cramerV(
+  dados_rh_cat$Department,
+  dados_rh_cat$EducationField
+)
+```
+
+## Criando matriz dos coeficientes de associação - função {style="font-size:.75em"}
+
+```{r, echo=TRUE}
+# Calcula o coeficiente Cramer V, uma espécie de coeficiente de correlação entre variáveis categóricas. 
+# A função deve ser aplicada sobre um df com todas variáveis do tipo character, que irá construir uma matriz com todos coeficientes, 
+# de forma análoga à matriz de correlação.
+
+cramer_mat <-
+  function(df){
+    lapply(names(df), function(x){
+      df_aux <- lapply(
+        names(df), 
+        function(y){
+          rcompanion::cramerV(df[[paste0(x)]], df[[paste0(y)]])[[1]]
+        }
+      ) 
+      names(df_aux) <- names(df)
+      df_aux %>% dplyr::bind_rows()
+    }) %>%
+      dplyr::bind_rows() %>% 
+      dplyr::mutate( var = names(df)) %>% 
+      dplyr::select(var, everything())
+  }
+```
+
+
+## Matriz dos coeficientes de associação {style="font-size:.75em"}
+
+```{r, echo=TRUE}
+library(highcharter)
+
+rh_cramer_matrix <- cramer_mat(dados_rh_cat)
+rh_cramer_matrix
+```
